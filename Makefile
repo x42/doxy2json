@@ -1,7 +1,7 @@
 TARGET=doxy2json
 
 CXX=clang++
-CXXFLAGS=`llvm-config --cxxflags --ldflags` -lclang -std=c++11 -O2 -Wall -Wextra
+CXXFLAGS=`llvm-config --cxxflags --ldflags` -lclang -std=c++11 -O2 -Wall -Wextra -pthread
 LOADLIBES=-lclang
 
 ifeq ($(shell uname -s), Darwin)
@@ -12,7 +12,7 @@ all: $(TARGET)
 
 $(TARGET): $(TARGET).cc
 
-clean: 
+clean:
 	@rm -f $(TARGET)
 
 test: all
